@@ -1,33 +1,14 @@
-# import cv2
-# from pose_tracker import PoseTracker
-# from eye_tracker import EyeTracker
-
-# pose_tracker = PoseTracker()
-# tracker = EyeTracker(sleep_threshold=5.0)
-# cap = cv2.VideoCapture(0)
-
-# while cap.isOpened():
-#     ret, frame = cap.read()
-#     if not ret:
-#         break
-#     frame, is_sleep = tracker.detect_eye_state(frame)
-#     annotated_frame, status = pose_tracker.process_frame(frame)
-#     print(f"Eye State: {state}")
-#     cv2.imshow('Pose Tracking', annotated_frame)
-
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-
-# cap.release()
-# cv2.destroyAllWindows()
-
 import cv2
 from pose_tracker import PoseTracker
 from eye_tracker import EyeTracker
+from alo_email import send_email_with_image
+from detect_window_change import ActivityTracker
 
 pose_tracker = PoseTracker()
 tracker = EyeTracker(sleep_threshold=5.0)
 cap = cv2.VideoCapture(0)
+tracker = ActivityTracker()
+tracker.track_activity()
 
 while cap.isOpened():
     ret, frame = cap.read()
