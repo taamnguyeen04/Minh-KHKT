@@ -41,7 +41,9 @@ class EyeTracker:
                     elapsed_time = time.time() - self.closed_eye_start
                     if elapsed_time >= self.sleep_threshold:
                         state = True #"Asleep"
-                    cv2.putText(frame, "Eyes Closed", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                        cv2.putText(frame, "Sleep", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                    else:
+                        cv2.putText(frame, "Eyes Closed", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
                 else:
                     self.closed_eye_start = None  # Reset nếu mắt mở
                     cv2.putText(frame, "Eyes Open", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
