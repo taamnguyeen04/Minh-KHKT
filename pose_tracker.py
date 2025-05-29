@@ -24,7 +24,7 @@ class PoseTracker:
 
     def is_sitting_straight(self, left_shoulder, right_shoulder):
         y_difference = abs(left_shoulder.y - right_shoulder.y)
-        return y_difference < 0.05
+        return y_difference < 0.1
 
     def estimate_eye_to_screen_distance(self, left_eye, right_eye, image_width):
         eye_to_eye_distance_cm = 6.3
@@ -35,14 +35,16 @@ class PoseTracker:
 
     def process_frame(self, frame):
         if self.detector is None:
-            return frame, "Error"
+            print(0)
+            return frame, "Error", None
 
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb_frame)
         detection_result = self.detector.detect(mp_image)
         
         if not detection_result.pose_landmarks:
-            return frame, "No Pose"
+            print(1)
+            return frame, "No Pose", None
 
         pose_landmarks = detection_result.pose_landmarks[0]
         left_shoulder, right_shoulder = pose_landmarks[11], pose_landmarks[12]
