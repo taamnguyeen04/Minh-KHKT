@@ -10,7 +10,14 @@ import os
 class PoseTracker:
     def __init__(self, model_path='pose_landmarker_heavy.task', focal_length=500):
         self.focal_length = focal_length
-        absolute_model_path = os.path.abspath(model_path)  # Chuyển sang đường dẫn tuyệt đối
+        
+        # Handle resource path for PyInstaller
+        import sys
+        if hasattr(sys, '_MEIPASS'):
+            absolute_model_path = os.path.join(sys._MEIPASS, model_path)
+        else:
+            absolute_model_path = os.path.abspath(model_path)
+            
         base_options = python.BaseOptions(model_asset_path=absolute_model_path)
         options = vision.PoseLandmarkerOptions(base_options=base_options, output_segmentation_masks=True)
         

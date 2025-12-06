@@ -1,1 +1,2 @@
 # Minh-KHKT
+.\venv\Scripts\pyinstaller.exe --noconfirm --onefile --clean --noconsole --icon "C:\Users\tam\Documents\GitHub\Minh-KHKT\images.ico" --add-data "pose_landmarker_heavy.task;." --collect-all mediapipe main.py

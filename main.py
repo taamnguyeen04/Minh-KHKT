@@ -107,12 +107,12 @@ while cap.isOpened():
     cv2.imshow('Pose Tracking', annotated_frame)
 
     # Phản hồi giọng nói
-    # if is_sleep:
-    #     text_to_speech("Bạn ơi, đừng ngủ trong lúc học, hãy ngồi thẳng lên bạn nhé", language="vi")
-    # if status == "Not sitting straight":
-    #     text_to_speech("Bạn đang ngồi nghiêng, hãy ngồi thẳng lưng lên bạn nhé", language="vi")
-    # if eye_distance and eye_distance < 40:
-    #     text_to_speech("Bạn đang ngồi gần màn hình quá, hãy ngồi xa ra bạn nhé", language="vi")
+    if is_sleep:
+        text_to_speech("Bạn ơi, đừng ngủ trong lúc học, hãy ngồi thẳng lên bạn nhé", language="vi")
+    if status == "Not sitting straight":
+        text_to_speech("Bạn đang ngồi nghiêng, hãy ngồi thẳng lưng lên bạn nhé", language="vi")
+    if eye_distance and eye_distance < 40:
+        text_to_speech("Bạn đang ngồi gần màn hình quá, hãy ngồi xa ra bạn nhé", language="vi")
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

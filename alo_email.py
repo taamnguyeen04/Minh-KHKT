@@ -6,6 +6,7 @@ import os
 
 def send_email_with_image(textt, image_path=None, text_path = None):
     receiver_email = "nguyentranminhtam04@gmail.com"
+    # receiver_email = "trinhnguyentuongvy15062010@gmail.com"
     sender_email = "tam.nguyentranminh04@hcmut.edu.vn"
     password = "toeu xjcj wgog lyav"
 
